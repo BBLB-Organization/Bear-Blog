@@ -17,4 +17,11 @@ export class ImageService {
   getImageByName(name: string):Observable<Blob>{
     return this.http.get(this.imageURL+"?name="+name,{responseType: "blob"});
   }
+
+  uploadImage(file: File): Observable<Image> {
+    const formData = new FormData();
+    formData.append('fileName', file, file.name);
+    return this.http.post<Image>(this.imageURL+"/upload", formData);
+  }
+  
 }
