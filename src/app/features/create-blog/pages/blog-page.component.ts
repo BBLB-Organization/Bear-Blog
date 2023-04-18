@@ -11,20 +11,32 @@ import { ImageService } from 'src/app/core/services/image.service';
 export class BlogPageComponent implements OnInit {
 
   imageUrl!: SafeUrl;
-  image: Blob = new Blob();
+  listOfImageUrl: SafeUrl[] = [];
   selectedFile!: File;
 
   constructor(private imageService: ImageService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.loadImage();
+    this.loadAllImages();
+  }
+
+  loadAllImages(){
+    this.imageService.getAllImages().subscribe((data:Image[])=>{
+      data.forEach((image:Image)=>{
+        let blob = new Blob([image.data], { type: 'image/jpeg' });
+        let safeBlobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blob));
+        this.listOfImageUrl.push(safeBlobUrl);
+      })
+      this.listOfImageUrl.forEach((info)=>{console.log(info)})
+    })
   }
 
   loadImage() {
     const imageName = 'Sample_abc.jpg';
     this.imageService.getImageByName(imageName).subscribe((data: Blob) => {
-      this.image = data;
-      this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(this.image))
+      this.imageUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data))
+      //console.log(this.imageUrl)
     })
   }
 

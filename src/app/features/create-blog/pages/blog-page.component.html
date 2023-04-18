@@ -1,6 +1,11 @@
 <h1>blog-page works!</h1>
 <img [src]="imageUrl" alt="sample.jpg">
 
+<div *ngFor="let imageAll of listOfImageUrl">
+    <img [src]="imageAll" alt="{{imageAll}}">
+    {{imageAll | byPassSecurity}}
+</div>
+
 <form>
     <input type="file" (change)="onFileSelected($event)">
     <button type="button" (click)="upload()">Upload</button>
