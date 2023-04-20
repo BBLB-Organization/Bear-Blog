@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { ImageService } from 'src/app/core/services/image.service';
+import { ImageService } from 'src/app/core/services/image-service/image.service';
 
 @Component({
   selector: 'app-view-images',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageService } from 'src/app/core/services/image.service';
+import { ImageService } from 'src/app/core/services/image-service/image.service';
 
 @Component({
   selector: 'app-upload-images',
