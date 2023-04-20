@@ -1,0 +1,174 @@
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Navigation styles */
+.main-nav {
+    padding-top: 30px;
+    padding-bottom: 25px;
+    background-color: #FFF;
+    -moz-box-shadow: 0 1px 5px rgba(0,0,0,.1);
+    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,.1);
+    box-shadow: 0 1px 5px rgba(0,0,0,.1);
+    z-index: 10;
+    position: relative;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.navigation-toggle {
+    display: none;
+}
+
+.item-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.item-nav li {
+    margin-left: 20px;
+}
+
+.item-nav li.active a {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Introduction styles */
+.intro {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+    background: url("../../../../assets/head-bg.jpg") center top #F7F7F7;
+    height: 190px;
+}
+
+.img-intro {
+    max-width: 100%;
+}
+
+.p-intro {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+/* Post styles */
+.post {
+    margin-bottom: 60px;
+}
+
+.post h1 {
+    font-size: 2.5em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.post hr {
+    border: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.in-content {
+    display: flex;
+}
+
+.in-content img.right {
+    float: right;
+    margin: 0 0 10px 20px;
+}
+
+.foot-post {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #999;
+}
+
+.foot-post .unit-100 {
+    margin-bottom: 10px;
+}
+
+.foot-post a {
+    color: #999;
+    margin-right: 10px;
+}
+
+.read-more {
+    display: inline-block;
+    background-color: #337ab7;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Social media icons */
+.social {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.social li {
+    margin-left: 20px;
+}
+
+.social li:first-child {
+    margin-left: 0;
+}
+
+.social li a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+}
+
+/* Previous button */
+.btn-black {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-align: center;
+    border: none;
+}
+
+.btn-black:hover {
+    background-color: #555;
+}
+
+.fa-arrow-left {
+    margin-right: 5px;
+}

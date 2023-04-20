@@ -18,8 +18,8 @@ export class ImageService {
     return this.http.get(this.imageURL+"?name="+name,{responseType: "blob"});
   }
 
-  getAllImages():Observable<Image[]>{
-    return this.http.get<Image[]>(this.imageURL+"/all");
+  getAllImageNames():Observable<string[]>{
+    return this.http.get<string[]>(this.imageURL+"/all");
   }
 
   uploadImage(file: File): Observable<Image> {
