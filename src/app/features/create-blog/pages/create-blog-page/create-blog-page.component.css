@@ -3,3 +3,97 @@
     max-width: 662px;
     padding: 0 20px;
 }
+
+.intro {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+    background: url("src/assets/nature-night.jpg") center top #F7F7F7;
+    height: 190px;
+    margin-bottom: 40px;
+}
+
+header,
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+/* Form Styles */
+form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input[type=text],
+textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+input[type=file]::file-selector-button {
+    display: block;
+    font-family: "Open Sans", sans-serif;
+    width: 10rem;
+    padding: 5px 10px;
+    background-color: #FFF;
+    border: 1px solid #E85F37;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #E85F37;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+input[type=file]::file-selector-button:hover{
+    background-color: #E85F37;
+    color:#FFF;
+    cursor: pointer;
+}
+
+
+input[type=submit] {
+    display: block;
+    font-family: "Open Sans", sans-serif;
+    width: 6.2rem;
+    padding: 10px 10px;
+    background-color: #FFF;
+    border: 1px solid #E85F37;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #E85F37;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+input[type=submit]:hover {
+    background-color: #E85F37;
+    color:#FFF;
+    cursor: pointer;
+}
