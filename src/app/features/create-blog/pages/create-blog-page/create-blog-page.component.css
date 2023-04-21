@@ -47,34 +47,11 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     resize: none;
-}
-
-input[type=file]::file-selector-button {
-    display: block;
-    font-family: "Open Sans", sans-serif;
-    width: 10rem;
-    padding: 5px 10px;
-    background-color: #FFF;
-    border: 1px solid #E85F37;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    color: #E85F37;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 2px;
-}
-
-input[type=file]::file-selector-button:hover{
-    background-color: #E85F37;
-    color:#FFF;
-    cursor: pointer;
+    font-family: "Comic Sans MS", cursive;
 }
 
 
-input[type=submit] {
+.submit-button {
     display: block;
     font-family: "Open Sans", sans-serif;
     width: 6.2rem;
@@ -92,7 +69,7 @@ input[type=submit] {
     letter-spacing: 2px;
 }
 
-input[type=submit]:hover {
+.submit-button:hover {
     background-color: #E85F37;
     color:#FFF;
     cursor: pointer;

@@ -7,6 +7,7 @@ import { UploadImagesComponent } from './create-blog/upload-images/upload-images
 import { SharedModule } from '../shared/shared.module';
 import { CreateBlogPageComponent } from './create-blog/pages/create-blog-page/create-blog-page.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,9 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     ByPassSecurityPipe,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [BlogPageComponent]
 })

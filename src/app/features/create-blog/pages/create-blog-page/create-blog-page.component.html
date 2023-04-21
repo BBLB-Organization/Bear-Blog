@@ -4,15 +4,15 @@
 </div>
 
 <div class="container">
-    <main>
-        <form enctype="multipart/form-data">
+    <div>
+        <form (ngSubmit)="submitBlog()" [formGroup]="blogForm" enctype="multipart/form-data">
             <label for="title">New Bear Blog Title Entry</label>
-            <input type="text" name="title" id="title" required>
+            <input type="text" name="title" id="title" class="form-control" formControlName="blogTitle" required>
             <label for="image">Bear Image</label>
-            <input type="file" name="image" id="image" accept="image/*" title="&nbsp;">
+            <app-upload-images (fileSelected)="setSelectedFile($event)"></app-upload-images>
             <label for="content">Bear diaries</label>
-            <textarea name="content" id="content" rows="10" required></textarea>
-            <input type="submit" value="Submit">
+            <textarea name="content" id="content" rows="10" class="form-control" formControlName="blogText" required></textarea>
+            <button type="submit" class="submit-button">Submit</button>
         </form>
-    </main>
+    </div>
 </div>

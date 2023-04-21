@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ImageService } from 'src/app/core/services/image-service/image.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { ImageService } from 'src/app/core/services/image-service/image.service'
   styleUrls: ['./upload-images.component.css']
 })
 export class UploadImagesComponent implements OnInit {
-  selectedFile!: File;
+  @Output() fileSelected : EventEmitter<File> = new EventEmitter();
 
   constructor(private imageService: ImageService) { }
 
@@ -15,17 +15,7 @@ export class UploadImagesComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
-
-  upload() {
-    if (this.selectedFile != null) {
-      this.imageService.uploadImage(this.selectedFile).subscribe(
-        (response) => {
-          console.log('Upload successful', response)
-        }
-      );
-    }
+    this.fileSelected.emit(event.target.files[0])
   }
 
 }
