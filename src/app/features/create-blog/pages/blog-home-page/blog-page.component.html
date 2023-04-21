@@ -1,0 +1,60 @@
+<!-- ADDS IMAGE TO TOP OF PAGE -->
+<div class="intro">
+    <div class="container">
+    </div>
+</div>
+
+<!-- Content -->
+<div class="content">
+    <div class="container">
+        <!-- Post -->
+        <div *ngFor="let singleBlog of listOfBlogs" class="post">
+            <!-- Heading -->
+            <a href="#">
+                <h1>{{singleBlog.blogTitle}}</h1>
+            </a>
+            <hr>
+            <div class="in-content">
+                <div>
+                    <div class="paragraph-image-grid">
+                        <div>
+                            <p class="with-image" *ngIf="singleBlog.imageId">
+                                {{ (singleBlog.blogText.length>350)? (singleBlog.blogText |
+                                slice:0:350)+'...':(singleBlog.blogText) }}
+                            </p>
+                            <p [class.without-image]="!singleBlog.imageId" *ngIf="!singleBlog.imageId">
+                                {{ (singleBlog.blogText.length>50)? (singleBlog.blogText |
+                                slice:0:50)+'...':(singleBlog.blogText) }}
+                            </p>
+                        </div>
+                        <div *ngIf="singleBlog.imageId">
+                            <app-view-images [imageId]="singleBlog.imageId"></app-view-images>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <a class="read-more" href="#">Read more</a>
+                </div>
+
+
+            </div>
+            <div class="foot-post">
+                <div class="units-row">
+                    <div class="unit-100">
+                        <strong>Tags:</strong>
+                        <a href="#"> Galaxy,</a>
+                        <a href="#">Human,</a>
+                        <a href="#">World</a>
+                    </div>
+                    <div class="unit-100">
+                        <strong>COMMENTS: </strong>
+                        <a href="#">3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /post -->
+
+    </div>
+</div>
