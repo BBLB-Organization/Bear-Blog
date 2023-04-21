@@ -1,4 +1,3 @@
-
 <!-- ADDS IMAGE TO TOP OF PAGE -->
 <div class="intro">
     <div class="container">
@@ -9,28 +8,27 @@
 <div class="content">
     <div class="container">
         <!-- Post -->
-        <div class="post">
+        <div *ngFor="let singleBlog of listOfBlogs" class="post">
             <!-- Heading -->
             <a href="#">
-                <h1>Galaxy is on your hand</h1>
+                <h1>{{singleBlog.blogTitle}}</h1>
             </a>
             <hr>
             <div class="in-content">
                 <div>
                     <div class="paragraph-image-grid">
                         <div>
-                            <p>
-                                Saturn has a prominent ring system that consists of nine continuous main rings and three
-                                discontinuous arcs, composed mostly of ice particles with a smaller amount of rocky
-                                debris and
-                                dust.
-                                Sixty-two known moons orbit the planet, of which fifty-three are officially named. This
-                                does not
-                                include the hundreds of "moonlets" comprising the rings.
+                            <p class="with-image" *ngIf="singleBlog.imageId">
+                                {{ (singleBlog.blogText.length>350)? (singleBlog.blogText |
+                                slice:0:350)+'...':(singleBlog.blogText) }}
+                            </p>
+                            <p [class.without-image]="!singleBlog.imageId" *ngIf="!singleBlog.imageId">
+                                {{ (singleBlog.blogText.length>50)? (singleBlog.blogText |
+                                slice:0:50)+'...':(singleBlog.blogText) }}
                             </p>
                         </div>
-                        <div>
-                            <img src="assets/post-img.jpg" alt="post-img.png">
+                        <div *ngIf="singleBlog.imageId">
+                            <app-view-images [imageId]="singleBlog.imageId"></app-view-images>
                         </div>
                     </div>
 
