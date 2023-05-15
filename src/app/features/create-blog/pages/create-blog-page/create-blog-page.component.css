@@ -50,6 +50,34 @@ textarea {
     font-family: "Comic Sans MS", cursive;
 }
 
+.tag-button-container{
+    margin-bottom: 20px;
+}
+
+.button-tags {
+    display: inline;
+    font-family: "Open Sans", sans-serif;
+    width: 6.2rem;
+    padding: 10px 10px;
+    background-color: #FFF;
+    border: 1px solid #32a852;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #32a852;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    margin-right: 10px;
+}
+
+.button-tags:hover {
+    background-color: #32a852;
+    color: #FFF;
+    cursor: pointer;
+}
 
 .submit-button {
     display: block;
@@ -71,6 +99,6 @@ textarea {
 
 .submit-button:hover {
     background-color: #E85F37;
-    color:#FFF;
+    color: #FFF;
     cursor: pointer;
 }

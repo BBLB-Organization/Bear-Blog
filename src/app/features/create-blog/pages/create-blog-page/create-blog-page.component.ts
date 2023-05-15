@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Blog } from 'src/app/core/models/blog';
 import { Image } from 'src/app/core/models/image';
 import { BlogService } from 'src/app/core/services/blog-service/blog.service';
 import { ImageService } from 'src/app/core/services/image-service/image.service';
+import { ToasterComponent } from 'src/app/shared/toaster/toaster.component';
 
 @Component({
   selector: 'app-create-blog-page',
@@ -21,6 +22,10 @@ export class CreateBlogPageComponent implements OnInit {
     blogText: "",
     imageId: undefined
   };
+
+  message = "Test error";
+  title = "Test error title";
+  @ViewChild(ToasterComponent)toasterComponent: ToasterComponent = new ToasterComponent;
 
   blogForm: FormGroup = this.fb.group({
     blogTitle: ['', Validators.required],
@@ -42,6 +47,10 @@ export class CreateBlogPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  openToaster(){
+    this.toasterComponent.openToaster();
   }
 
   setSelectedFile(file: File) {
