@@ -15,7 +15,8 @@ export class BlogPageComponent implements OnInit {
     id: undefined,
     blogTitle: "",
     blogText: "",
-    imageId: undefined
+    imageId: undefined,
+    tagListId: undefined
   }
 
   constructor(private blogService: BlogService, private imageService: ImageService) { }

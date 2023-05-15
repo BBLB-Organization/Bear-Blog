@@ -50,12 +50,20 @@ textarea {
     font-family: "Comic Sans MS", cursive;
 }
 
-.tag-button-container{
+.tag-bottom-spacing{
     margin-bottom: 20px;
 }
 
-.button-tags {
+.tag-button-container{
     display: inline;
+}
+
+.button-tags.tag-picked{
+    background-color: #32a852;
+    color: #FFF;
+}
+
+.button-tags {
     font-family: "Open Sans", sans-serif;
     width: 6.2rem;
     padding: 10px 10px;
