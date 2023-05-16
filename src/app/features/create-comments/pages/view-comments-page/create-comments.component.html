@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="showCommentPage">
     <a href="#">
         <h1>{{singleBlog.blogTitle}}</h1>
     </a>
@@ -22,4 +22,36 @@
             </div>
         </div>
     </div>
+
+
+    <div class="comment-section">
+
+        <!-- Comment form -->
+        <div class="comment-form">
+            <textarea id="comment-input" placeholder="Write your comment here" rows="5"></textarea>
+            <button id="comment-submit">Submit</button>
+        </div>
+
+        <!-- Existing comments -->
+        <div class="comment">
+            <div class="comment-author">John Doe</div>
+            <div class="comment-date">May 15, 2023</div>
+            <div class="comment-content">
+                This is the first comment. It's great!
+            </div>
+        </div>
+        <div class="comment">
+            <div class="comment-author">Jane Smith</div>
+            <div class="comment-date">May 16, 2023</div>
+            <div class="comment-content">
+                Second comment here. Keep up the good work!
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div *ngIf="!showCommentPage">
+    <h2 class="page-not-found">Blog Page Not Found</h2>
+    <h3 class="page-not-found">Redirecting back to the homepage...</h3>
 </div>

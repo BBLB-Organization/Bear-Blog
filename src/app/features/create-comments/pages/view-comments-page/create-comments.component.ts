@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from 'src/app/core/models/blog';
 import { BlogService } from 'src/app/core/services/blog-service/blog.service';
 
@@ -11,7 +11,7 @@ import { BlogService } from 'src/app/core/services/blog-service/blog.service';
 export class CreateCommentsComponent implements OnInit {
 
   blogId: number | undefined;
-  showCommentPage: boolean = true;
+  showCommentPage: boolean = false;
   singleBlog: Blog = {
     id: undefined,
     blogTitle: "",
@@ -22,7 +22,8 @@ export class CreateCommentsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private blogService: BlogService
+    private blogService: BlogService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,9 +37,13 @@ export class CreateCommentsComponent implements OnInit {
     this.blogService.getBlogById(this.blogId).subscribe({
       next: (res: Blog) => {
         this.singleBlog = res;
+        this.showCommentPage = true;
       },
       error: (msg: any) => {
         this.showCommentPage = false;
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 3000);
       }
     }
 
