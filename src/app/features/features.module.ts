@@ -9,11 +9,13 @@ import { CreateBlogPageComponent } from './create-blog/pages/create-blog-page/cr
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewTagsComponent } from './create-blog/view-tags/view-tags.component';
+import { CreateCommentsComponent } from './create-comments/pages/view-comments-page/create-comments.component';
+
 
 
 
 @NgModule({
-  declarations: [BlogPageComponent, ViewImagesComponent, UploadImagesComponent, CreateBlogPageComponent, ViewTagsComponent],
+  declarations: [BlogPageComponent, ViewImagesComponent, UploadImagesComponent, CreateBlogPageComponent, ViewTagsComponent, CreateCommentsComponent],
   imports: [
     CommonModule,
     ByPassSecurityPipe,

@@ -49,10 +49,12 @@
                     </div>
                     <div class="unit-100">
                         <strong>COMMENTS: </strong>
-                        <a href="#">3</a>
+                        <button (click)="navigateToCommentPage(singleBlog.id)">Navigate to comment page with blog ID:
+                            {{singleBlog.id}}</button>
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- /post -->
 
