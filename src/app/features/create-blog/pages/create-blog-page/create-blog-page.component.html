@@ -11,8 +11,17 @@
             <label for="image">Bear Image</label>
             <app-upload-images (fileSelected)="setSelectedFile($event)"></app-upload-images>
             <label for="content">Bear diaries</label>
-            <textarea name="content" id="content" rows="10" class="form-control" formControlName="blogText" required></textarea>
+            <textarea name="content" id="content" rows="10" class="form-control" formControlName="blogText"
+                required></textarea>
+            <label for="tags">Add Tags</label>
+            <div class="tag-bottom-spacing">
+                <div class="tag-button-container" *ngFor="let tag of displayTagList; let i = index">
+                    <button type="button" [class.tag-picked]="this.userTagList.includes(tag)" (click)="updateTagList(tag)" class="button-tags">{{tag}}</button>
+                </div>
+            </div>
             <button type="submit" class="submit-button">Submit</button>
         </form>
     </div>
+    <app-toaster [message]="message"></app-toaster>
+
 </div>

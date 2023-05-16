@@ -144,6 +144,10 @@ img {
     margin-right: 10px;
 }
 
+.tag-list{
+    display: inline;
+}
+
 .read-more {
     display: inline-block;
     background-color: #337ab7;
