@@ -8,11 +8,12 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateBlogPageComponent } from './create-blog/pages/create-blog-page/create-blog-page.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewTagsComponent } from './create-blog/view-tags/view-tags.component';
 
 
 
 @NgModule({
-  declarations: [BlogPageComponent, ViewImagesComponent, UploadImagesComponent, CreateBlogPageComponent],
+  declarations: [BlogPageComponent, ViewImagesComponent, UploadImagesComponent, CreateBlogPageComponent, ViewTagsComponent],
   imports: [
     CommonModule,
     ByPassSecurityPipe,

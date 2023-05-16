@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from 'src/app/core/models/blog';
+import { Tag } from 'src/app/core/models/tag';
 import { BlogService } from 'src/app/core/services/blog-service/blog.service';
 import { ImageService } from 'src/app/core/services/image-service/image.service';
+import { TagService } from 'src/app/core/services/tag-service/tag.service';
 
 @Component({
   selector: 'app-blog-page',
@@ -9,8 +11,9 @@ import { ImageService } from 'src/app/core/services/image-service/image.service'
   styleUrls: ['./blog-page.component.css']
 })
 export class BlogPageComponent implements OnInit {
-  
+
   listOfBlogs: Blog[] = [];
+  tagListPerBlog: string = "";
   blogInfo: Blog = {
     id: undefined,
     blogTitle: "",
@@ -19,7 +22,11 @@ export class BlogPageComponent implements OnInit {
     tagListId: undefined
   }
 
-  constructor(private blogService: BlogService, private imageService: ImageService) { }
+  constructor(
+    private blogService: BlogService,
+    private imageService: ImageService,
+    private tagService: TagService
+  ) { }
 
   ngOnInit(): void {
     this.loadAllBlogs();
@@ -28,9 +35,8 @@ export class BlogPageComponent implements OnInit {
   loadAllBlogs() {
     this.blogService.getAllBlogs().subscribe((res: Blog[]) => {
       this.listOfBlogs = res;
-    })
+    });
   }
-
 
 }
 

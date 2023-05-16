@@ -73,7 +73,7 @@ export class CreateBlogPageComponent implements OnInit {
   }
 
   saveAndGetTagList() {
-    this.newTagList.tagNames = this.userTagList.join(',');
+    this.newTagList.tagNames = this.userTagList.join(', ');
     this.tagService.saveTagList(this.newTagList).subscribe((tagResponse: Tag) => {
       this.newBlog.tagListId = tagResponse.id;
       this.blogService.postBlog(this.newBlog).subscribe((res) => {

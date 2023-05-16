@@ -41,11 +41,11 @@
             </div>
             <div class="foot-post">
                 <div class="units-row">
-                    <div class="unit-100">
+                    <div class="unit-100" *ngIf="singleBlog.tagListId">
                         <strong>Tags:</strong>
-                        <a href="#"> Galaxy,</a>
-                        <a href="#">Human,</a>
-                        <a href="#">World</a>
+                        <div class="tag-list">
+                            <app-view-tags [tagListId]="singleBlog.tagListId"></app-view-tags>
+                        </div>
                     </div>
                     <div class="unit-100">
                         <strong>COMMENTS: </strong>

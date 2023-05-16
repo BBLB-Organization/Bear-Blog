@@ -22,7 +22,7 @@ export class TagService {
     return this.http.post<Tag>(this.tagURL, tagList, this.blogHeaders);
   }
 
-  getTagListById(id: number): Observable<Tag> {
+  getTagListById(id: number | undefined): Observable<Tag> {
     return this.http.get<Tag>(this.tagURL + "/" + id);
   }
 
