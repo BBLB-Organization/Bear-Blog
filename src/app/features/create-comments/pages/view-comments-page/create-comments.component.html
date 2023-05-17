@@ -30,20 +30,7 @@
         <app-user-create-comments [blog]="singleBlog"></app-user-create-comments>
 
         <!-- Existing comments -->
-        <div class="comment">
-            <div class="comment-author">John Doe</div>
-            <div class="comment-date">May 15, 2023</div>
-            <div class="comment-content">
-                This is the first comment. It's great!
-            </div>
-        </div>
-        <div class="comment">
-            <div class="comment-author">Jane Smith</div>
-            <div class="comment-date">May 16, 2023</div>
-            <div class="comment-content">
-                Second comment here. Keep up the good work!
-            </div>
-        </div>
+        <app-view-comments [blog]="singleBlog"></app-view-comments>
     </div>
 
 

@@ -37,7 +37,7 @@ export class BlogPageComponent implements OnInit {
 
   loadAllBlogs() {
     this.blogService.getAllBlogs().subscribe((res: Blog[]) => {
-      this.listOfBlogs = res;
+      this.listOfBlogs = res.reverse();
     });
   }
 

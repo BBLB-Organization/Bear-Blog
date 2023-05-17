@@ -49,9 +49,7 @@ export class UserCreateCommentsComponent implements OnInit {
   }
 
   addCommentIdToBlog() {
-    this.blogService.updateBlogWithCommentId(this.blog.id, this.blog).subscribe((res: Blog) => {
-      console.log('BLOG COMMENT ID UPDATED', res);
-    });
+    this.blogService.updateBlogWithCommentId(this.blog.id, this.blog).subscribe();
   }
 
   postComment() {
