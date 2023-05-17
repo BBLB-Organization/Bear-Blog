@@ -31,4 +31,8 @@ export class BlogService {
     return this.http.get<Blog>(this.blogURL + "/" + blogId)
   }
 
+  updateBlogWithCommentId(blogId: number | undefined, updatedBlog: Blog): Observable<Blog> {
+    return this.http.put<Blog>(this.blogURL + "/" + blogId, updatedBlog, this.blogHeaders);
+  }
+
 }

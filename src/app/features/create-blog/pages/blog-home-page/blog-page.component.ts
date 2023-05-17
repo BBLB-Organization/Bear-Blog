@@ -20,7 +20,8 @@ export class BlogPageComponent implements OnInit {
     blogTitle: "",
     blogText: "",
     imageId: undefined,
-    tagListId: undefined
+    tagListId: undefined,
+    commentId: undefined
   }
 
   constructor(

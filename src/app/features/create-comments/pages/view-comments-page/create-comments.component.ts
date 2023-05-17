@@ -17,7 +17,8 @@ export class CreateCommentsComponent implements OnInit {
     blogTitle: "",
     blogText: "",
     imageId: undefined,
-    tagListId: undefined
+    tagListId: undefined,
+    commentId: undefined
   }
 
   constructor(
