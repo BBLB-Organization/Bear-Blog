@@ -78,7 +78,7 @@ export class CreateBlogPageComponent implements OnInit {
     this.tagService.saveTagList(this.newTagList).subscribe((tagResponse: Tag) => {
       this.newBlog.tagListId = tagResponse.id;
       this.blogService.postBlog(this.newBlog).subscribe((res) => {
-        this.message = this.blogTitle + "was submitted successfully!";
+        this.message = this.blogTitle + " was submitted successfully!";
         this.toasterComponent.openToaster();
       });
     })
@@ -101,7 +101,7 @@ export class CreateBlogPageComponent implements OnInit {
             else {
               this.newBlog.tagListId = undefined;
               this.blogService.postBlog(this.newBlog).subscribe((res) => {
-                this.message = this.blogTitle + "was submitted successfully!";
+                this.message = this.blogTitle + " was submitted successfully!";
                 this.toasterComponent.openToaster();
               });
             }
@@ -119,7 +119,7 @@ export class CreateBlogPageComponent implements OnInit {
         else {
           this.newBlog.tagListId = undefined;
           this.blogService.postBlog(this.newBlog).subscribe((res) => {
-            this.message = this.blogTitle + "was submitted successfully!";
+            this.message = this.blogTitle + " was submitted successfully!";
             this.toasterComponent.openToaster();
           });
         }

@@ -27,10 +27,7 @@
     <div class="comment-section">
 
         <!-- Comment form -->
-        <div class="comment-form">
-            <textarea id="comment-input" placeholder="Write your comment here" rows="5"></textarea>
-            <button id="comment-submit">Submit</button>
-        </div>
+        <app-user-create-comments [blog]="singleBlog"></app-user-create-comments>
 
         <!-- Existing comments -->
         <div class="comment">

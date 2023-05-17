@@ -10,12 +10,13 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewTagsComponent } from './create-blog/view-tags/view-tags.component';
 import { CreateCommentsComponent } from './create-comments/pages/view-comments-page/create-comments.component';
+import { UserCreateCommentsComponent } from './create-comments/user-create-comments/user-create-comments.component';
 
 
 
 
 @NgModule({
-  declarations: [BlogPageComponent, ViewImagesComponent, UploadImagesComponent, CreateBlogPageComponent, ViewTagsComponent, CreateCommentsComponent],
+  declarations: [BlogPageComponent, ViewImagesComponent, UploadImagesComponent, CreateBlogPageComponent, ViewTagsComponent, CreateCommentsComponent, UserCreateCommentsComponent],
   imports: [
     CommonModule,
     ByPassSecurityPipe,

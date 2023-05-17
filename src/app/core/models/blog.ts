@@ -4,5 +4,5 @@ export interface Blog{
     blogTitle: string,
     imageId: number | undefined,
     tagListId: number | undefined,
-    commentId: number | undefined
+    commentId: string | undefined
 }
