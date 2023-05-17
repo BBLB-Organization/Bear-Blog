@@ -10,7 +10,7 @@
         <!-- Post -->
         <div *ngFor="let singleBlog of listOfBlogs" class="post">
             <!-- Heading -->
-            <a href="#">
+            <a (click)="navigateToCommentPage(singleBlog.id)">
                 <h1>{{singleBlog.blogTitle}}</h1>
             </a>
             <hr>
@@ -47,8 +47,7 @@
                     </div>
                     <div class="unit-100">
                         <strong>COMMENTS: </strong>
-                        <button (click)="navigateToCommentPage(singleBlog.id)">Navigate to comment page with blog ID:
-                            {{singleBlog.id}}</button>
+                        <button class="navigate-to-comments-button" (click)="navigateToCommentPage(singleBlog.id)">{{singleBlog.commentId?.split(',')?.length ?? '0'}}</button>
                     </div>
                 </div>
             </div>
