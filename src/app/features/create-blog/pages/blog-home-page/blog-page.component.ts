@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Blog } from 'src/app/core/models/blog';
 import { Tag } from 'src/app/core/models/tag';
 import { BlogService } from 'src/app/core/services/blog-service/blog.service';
@@ -19,13 +20,15 @@ export class BlogPageComponent implements OnInit {
     blogTitle: "",
     blogText: "",
     imageId: undefined,
-    tagListId: undefined
+    tagListId: undefined,
+    commentId: undefined
   }
 
   constructor(
     private blogService: BlogService,
     private imageService: ImageService,
-    private tagService: TagService
+    private tagService: TagService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,8 +37,12 @@ export class BlogPageComponent implements OnInit {
 
   loadAllBlogs() {
     this.blogService.getAllBlogs().subscribe((res: Blog[]) => {
-      this.listOfBlogs = res;
+      this.listOfBlogs = res.reverse();
     });
+  }
+
+  navigateToCommentPage(blogId: number | undefined){
+    this.router.navigate([blogId+'/comments']);
   }
 
 }

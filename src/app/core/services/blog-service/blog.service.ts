@@ -17,14 +17,22 @@ export class BlogService {
   };
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  postBlog(blog: Blog):Observable<Blog>{
+  postBlog(blog: Blog): Observable<Blog> {
     return this.http.post<Blog>(this.blogURL, blog, this.blogHeaders);
   }
 
-  getAllBlogs():Observable<Blog[]>{
+  getAllBlogs(): Observable<Blog[]> {
     return this.http.get<Blog[]>(this.blogURL);
+  }
+
+  getBlogById(blogId: number | undefined): Observable<Blog> {
+    return this.http.get<Blog>(this.blogURL + "/" + blogId)
+  }
+
+  updateBlogWithCommentId(blogId: number | undefined, updatedBlog: Blog): Observable<Blog> {
+    return this.http.put<Blog>(this.blogURL + "/" + blogId, updatedBlog, this.blogHeaders);
   }
 
 }

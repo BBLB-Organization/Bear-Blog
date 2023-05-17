@@ -3,5 +3,6 @@ export interface Blog{
     blogText: string,
     blogTitle: string,
     imageId: number | undefined,
-    tagListId: number | undefined
+    tagListId: number | undefined,
+    commentId: string | undefined
 }

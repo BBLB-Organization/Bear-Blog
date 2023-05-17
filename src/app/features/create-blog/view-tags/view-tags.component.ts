@@ -23,7 +23,6 @@ export class ViewTagsComponent implements OnInit {
   loadTagById(tagId: number | undefined) {
     this.tagService.getTagListById(tagId).subscribe((res: Tag) => {
       this.tagListPerBlog = res.tagNames;
-      console.log(this.tagListPerBlog)
     });
   }
 

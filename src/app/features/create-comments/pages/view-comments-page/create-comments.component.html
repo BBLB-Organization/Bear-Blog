@@ -1,0 +1,41 @@
+<div class="container" *ngIf="showCommentPage">
+    <a href="#">
+        <h1>{{singleBlog.blogTitle}}</h1>
+    </a>
+    <hr>
+    <div class="in-content">
+        <div>
+            <div class="paragraph-image-grid">
+                <div>
+                    <p class="with-image" *ngIf="singleBlog.imageId">
+                        {{ (singleBlog.blogText.length>350)? (singleBlog.blogText |
+                        slice:0:350)+'...':(singleBlog.blogText) }}
+                    </p>
+                    <p [class.without-image]="!singleBlog.imageId" *ngIf="!singleBlog.imageId">
+                        {{ (singleBlog.blogText.length>50)? (singleBlog.blogText |
+                        slice:0:50)+'...':(singleBlog.blogText) }}
+                    </p>
+                </div>
+                <div *ngIf="singleBlog.imageId">
+                    <app-view-images [imageId]="singleBlog.imageId"></app-view-images>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="comment-section">
+
+        <!-- Comment form -->
+        <app-user-create-comments [blog]="singleBlog"></app-user-create-comments>
+
+        <!-- Existing comments -->
+        <app-view-comments [blog]="singleBlog"></app-view-comments>
+    </div>
+
+
+</div>
+<div *ngIf="!showCommentPage">
+    <h2 class="page-not-found">Blog Page Not Found</h2>
+    <h3 class="page-not-found">Redirecting back to the homepage...</h3>
+</div>

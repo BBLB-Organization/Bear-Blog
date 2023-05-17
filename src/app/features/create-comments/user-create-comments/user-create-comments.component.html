@@ -1,0 +1,7 @@
+<div class="comment-form">
+    <form (ngSubmit)="postComment()" [formGroup]="commentForm" enctype="multipart/form-data">
+        <textarea id="comment-input" placeholder="Write your comment here" rows="5" class="form-control" formControlName="commentText"></textarea>
+        <button type="submit" id="comment-submit">Submit</button>
+    </form>
+</div>
+<app-toaster [message]="message"></app-toaster>
