@@ -23,9 +23,18 @@ export class ViewImagesComponent implements OnInit {
     if (this.imageId) {
       this.imageService.getImageById(this.imageId).subscribe((data: Blob) => {
         this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(data));
+        
+        const imgTemp = new Image();
+        let testing = URL.createObjectURL(data);
+        imgTemp.src = testing;
+        imgTemp.onload = () => {
+          const width = imgTemp.width;
+          const height = imgTemp.height;
+          console.log('Image width:', width);
+          console.log('Image height:', height);
+        }
       })
     }
-
   }
 
   //MAY USE LOAD ALL IMAGES LATER ...
