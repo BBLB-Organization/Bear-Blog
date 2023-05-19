@@ -12,12 +12,24 @@ import { ViewTagsComponent } from './create-blog/view-tags/view-tags.component';
 import { CreateCommentsComponent } from './create-comments/pages/view-comments-page/create-comments.component';
 import { UserCreateCommentsComponent } from './create-comments/user-create-comments/user-create-comments.component';
 import { ViewCommentsComponent } from './create-comments/view-comments/view-comments.component';
+import { CreateLoginPageComponent } from './create-login/pages/create-login-page/create-login-page.component';
+
 
 
 
 
 @NgModule({
-  declarations: [BlogPageComponent, ViewImagesComponent, UploadImagesComponent, CreateBlogPageComponent, ViewTagsComponent, CreateCommentsComponent, UserCreateCommentsComponent, ViewCommentsComponent],
+  declarations: [
+    BlogPageComponent, 
+    ViewImagesComponent, 
+    UploadImagesComponent, 
+    CreateBlogPageComponent, 
+    ViewTagsComponent, 
+    CreateCommentsComponent, 
+    UserCreateCommentsComponent, 
+    ViewCommentsComponent, 
+    CreateLoginPageComponent
+  ],
   imports: [
     CommonModule,
     ByPassSecurityPipe,
