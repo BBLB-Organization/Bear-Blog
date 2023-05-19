@@ -4,6 +4,7 @@ import { BlogPageComponent } from './features/create-blog/pages/blog-home-page/b
 import { CreateBlogPageComponent } from './features/create-blog/pages/create-blog-page/create-blog-page.component';
 import { CreateCommentsComponent } from './features/create-comments/pages/view-comments-page/create-comments.component';
 import { CreateLoginPageComponent } from './features/create-login/pages/create-login-page/create-login-page.component';
+import { CreateUserRegistrationPageComponent } from './features/create-login/pages/create-user-registration-page/create-user-registration-page.component';
 
 
 
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path:'login',
     component: CreateLoginPageComponent
+  },
+  {
+    path:'register',
+    component: CreateUserRegistrationPageComponent
   }
 ];
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Users } from 'src/app/core/models/users';
+import { UsersService } from 'src/app/core/services/user-service/users.service';
 
 @Component({
   selector: 'app-create-login-page',
@@ -11,8 +13,7 @@ export class CreateLoginPageComponent implements OnInit {
 
   loginPageWindow: any;
 
-  //existingUser?: Users;
-  accessToken: string = "";
+  existingUser?: Users;
   signInForm: FormGroup = this.fb.group({
     emailAddress: ['', Validators.required],
     password: ['', Validators.required]
@@ -24,12 +25,26 @@ export class CreateLoginPageComponent implements OnInit {
 
   get password(): string { return this.signInForm.get('password')?.value; }
 
-  prepareSignIn() {
+  prepareSignIn(): Users {
+    let user : Users = {
+      id: undefined,
+      username: "",
+      password: "",
+      emailAddress: ""
+    }
+    return user;
   }
 
   login() {
     if (this.signInForm.valid) {
       let userLoggingIn = this.prepareSignIn();
+      this.userService.checkLoginCredentials(userLoggingIn).subscribe({
+        next: (user: Users) => {
+          localStorage.setItem("username", user.username);
+          this.loginPageWindow.location.reload();
+        }
+      }
+      );
 
 
 
@@ -42,15 +57,13 @@ export class CreateLoginPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
-    ) {
+    private router: Router,
+    private userService: UsersService) {
     this.loginPageWindow = window;
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem("accessToken") != null) {
-      this.router.navigate(['homepage']);
-    }
+    
   }
 
 }
