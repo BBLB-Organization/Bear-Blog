@@ -1,0 +1,42 @@
+<img class="nature-mountains" src="assets/nature-mountain-register.jpg" alt="nature-mountain.jpg">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <img src="assets/bear-logo.png" alt="bear-logo.png" class="bear-image mx-auto d-block text-center">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Register</h3>
+                    <form (ngSubmit)="registerUser()" [formGroup]="registerForm">
+                        <div>
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control" formControlName="firstName" id="firstName">
+                        </div>
+                        <div>
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" formControlName="lastName" id="lastName">
+                        </div>
+                        <div>
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" formControlName="username" id="userName">
+                        </div>
+                        <div>
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" formControlName="email" id="email"
+                                aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" formControlName="password" id="password">
+                        </div>
+                        <div class="pt-5 pb-5 button-row">
+                            <button type="submit"
+                                class="btn btn-lg btn-outline-primary col-md-5 registerButton">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

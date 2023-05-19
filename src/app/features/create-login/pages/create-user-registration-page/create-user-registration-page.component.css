@@ -1,0 +1,148 @@
+/* Center the container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Adjust the card size */
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: auto;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 3px solid rgba(0, 0, 0, 0.03);
+    border-radius: 0.375rem;
+    background-color: #FFF;
+}
+
+/* Center the card content */
+.card-body {
+    text-align: center;
+}
+
+/* Style the form elements */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+form {
+    display: block;
+    width: 80%;
+    margin-left: 7.5%;
+}
+
+.form-control {
+    word-wrap: break-word;
+    margin-right: auto;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Style the buttons */
+.signInButton,
+.registerButton {
+    margin-top: 0.5rem;
+    font-family: "Open Sans", sans-serif;
+    padding: 10px 10px;
+    background-color: #FFF;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.registerButton {
+    border: 1px solid #E85F37;
+    color: #E85F37;
+}
+
+.registerButton:hover{
+    background-color: #E85F37;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.signInButton:hover{
+    background-color: #32a852;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.signInButton {
+    border: 1px solid #32a852;
+    color: #32a852;
+}
+
+/* Add spacing between the buttons */
+.signInButton+.registerButton {
+    margin-left: 0.5rem;
+}
+
+.button-row{
+    text-align: right;
+}
+
+/* Center the logo image */
+img.mx-auto.d-block.text-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Add space at the bottom */
+.pt-5 {
+    padding-top: 5rem;
+}
+
+.pb-5 {
+    padding-bottom: 2rem;
+}
+
+.button-row{
+    position: relative;
+}
+
+/* Center the card title */
+.card-title.text-center {
+    text-align: center;
+    font-size: calc(1.3rem + 0.6vw);
+}
+
+/* Add margin at the bottom of the card title */
+.card-title.mb-4 {
+    margin-bottom: 1rem;
+}
+
+/* Add smaller text for the form help */
+.form-text.text-muted {
+    font-size: 0.875rem;
+}
+
+.nature-mountains{
+    position: absolute;
+    opacity: 1;
+    width: 100%;
+    height: 699px;
+}
+
+.bear-image{
+    position: relative;
+    opacity: 1;
+}
