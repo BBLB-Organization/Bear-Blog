@@ -13,7 +13,15 @@ export class CreateLoginPageComponent implements OnInit {
 
   loginPageWindow: any;
 
-  existingUser?: Users;
+  existingUser: Users = {
+    id: undefined,
+    userName: "",
+    password: "",
+    emailAddress: "",
+    firstName: "",
+    lastName: ""
+  };
+
   signInForm: FormGroup = this.fb.group({
     emailAddress: ['', Validators.required],
     password: ['', Validators.required]
@@ -25,23 +33,17 @@ export class CreateLoginPageComponent implements OnInit {
 
   get password(): string { return this.signInForm.get('password')?.value; }
 
-  prepareSignIn(): Users {
-    let user : Users = {
-      id: undefined,
-      username: "",
-      password: "",
-      emailAddress: ""
-    }
-    return user;
+  prepareSignIn() {
+    this.existingUser.emailAddress = this.emailAddress;
+    this.existingUser.password = this.password;
   }
 
   login() {
     if (this.signInForm.valid) {
-      let userLoggingIn = this.prepareSignIn();
-      this.userService.checkLoginCredentials(userLoggingIn).subscribe({
+      this.prepareSignIn();
+      this.userService.checkLoginCredentials(this.existingUser).subscribe({
         next: (user: Users) => {
-          localStorage.setItem("username", user.username);
-          this.loginPageWindow.location.reload();
+          console.log('USER LOGIN SUCCESSFUL', user);
         }
       }
       );
@@ -63,7 +65,7 @@ export class CreateLoginPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
 }

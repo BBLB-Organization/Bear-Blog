@@ -1,6 +1,8 @@
 export interface Users {
     id: number | undefined,
-    username: string,
+    firstName: string,
+    lastName: string,
+    userName: string,
     emailAddress: string,
     password: string
 }
