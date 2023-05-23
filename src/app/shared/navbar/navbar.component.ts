@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     let emailAddress = localStorage.getItem('emailAddress') ?? "";
     if (emailAddress != "") {
-      this.authService.checkIfUserLoggedIn(emailAddress).subscribe((res) => {
+      this.authService.checkIfUserLoggedIn(emailAddress).subscribe((res:any) => {
         this.navbarLoginToggle = true;
       });
     }
@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
   logoutCurrentUser() {
     let emailAddress = localStorage.getItem('emailAddress');
     this.authService.logoutCurrentUser(emailAddress).subscribe();
-    localStorage.removeItem('emailAddress');
+    localStorage.clear();
     this.navbarWindow.location.reload();
   }
 
