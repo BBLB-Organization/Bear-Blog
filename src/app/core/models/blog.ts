@@ -4,5 +4,7 @@ export interface Blog{
     blogTitle: string,
     imageId: number | undefined,
     tagListId: number | undefined,
-    commentId: string | undefined
+    commentId: string | undefined,
+    userName: string,
+    createdOn : Date
 }

@@ -21,7 +21,9 @@ export class BlogPageComponent implements OnInit {
     blogText: "",
     imageId: undefined,
     tagListId: undefined,
-    commentId: undefined
+    commentId: undefined,
+    userName: "",
+    createdOn : new Date()
   }
 
   constructor(

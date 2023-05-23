@@ -24,7 +24,9 @@ export class UserCreateCommentsComponent implements OnInit {
     blogText: "",
     imageId: undefined,
     tagListId: undefined,
-    commentId: undefined
+    commentId: undefined,
+    userName: "",
+    createdOn: new Date()
   };
   comment: Comment = {
     id: undefined,
@@ -54,7 +56,7 @@ export class UserCreateCommentsComponent implements OnInit {
 
   postComment() {
     if (this.commentForm.valid) {
-      this.comment.username = 'Anonymous';
+      this.comment.username = localStorage.getItem('userName') ?? 'Anonymous';
       this.comment.commentText = this.commentText;
       this.commentService.saveComment(this.comment).subscribe({
         next: (res: Comment) => {

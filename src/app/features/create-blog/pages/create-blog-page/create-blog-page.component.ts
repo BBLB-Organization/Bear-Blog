@@ -24,7 +24,9 @@ export class CreateBlogPageComponent implements OnInit {
     blogText: "",
     imageId: undefined,
     tagListId: undefined,
-    commentId: undefined
+    commentId: undefined,
+    userName: "",
+    createdOn: new Date()
   };
   newTagList: Tag = {
     id: undefined,
@@ -87,6 +89,7 @@ export class CreateBlogPageComponent implements OnInit {
 
   submitBlog() {
     if (this.blogForm.valid) {
+      this.newBlog.userName = localStorage.getItem('userName') ?? "Anonymous";
       this.newBlog.blogTitle = this.blogTitle;
       this.newBlog.blogText = this.blogText;
       if (this.selectedFile != null) {

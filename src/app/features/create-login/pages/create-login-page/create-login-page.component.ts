@@ -48,6 +48,7 @@ export class CreateLoginPageComponent implements OnInit {
       this.userService.checkLoginCredentials(this.existingUser).subscribe({
         next: (user: Users) => {
           localStorage.setItem('emailAddress', this.existingUser.emailAddress);
+          localStorage.setItem('userName', user.userName);
           this.loginPageWindow.location.reload();
         },
         error: (msg: any) => {
