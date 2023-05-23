@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Users } from 'src/app/core/models/users';
 import { UsersService } from 'src/app/core/services/user-service/users.service';
+import { ToasterComponent } from 'src/app/shared/toaster/toaster.component';
 
 @Component({
   selector: 'app-create-user-registration-page',
@@ -11,13 +12,17 @@ import { UsersService } from 'src/app/core/services/user-service/users.service';
 })
 export class CreateUserRegistrationPageComponent implements OnInit {
 
+  message = "";
+  @ViewChild(ToasterComponent) toasterComponent: ToasterComponent = new ToasterComponent;
+
   newUserInfo: Users = {
     id: undefined,
     firstName: "",
     lastName: "",
     userName: "",
     emailAddress: "",
-    password: ""
+    password: "",
+    loggedIn: false
   }
 
   registerForm: FormGroup = this.fb.group({
@@ -40,15 +45,18 @@ export class CreateUserRegistrationPageComponent implements OnInit {
     this.newUserInfo.firstName = this.firstName;
     this.newUserInfo.lastName = this.lastName;
     this.newUserInfo.userName = this.username;
-    this.newUserInfo.emailAddress=  this.email;
+    this.newUserInfo.emailAddress = this.email;
     this.newUserInfo.password = this.password;
   }
 
   registerUser(): void {
     if (this.registerForm.valid) {
       this.prepareSave();
-      this.userService.registerUser(this.newUserInfo).subscribe((res)=>{
-        console.log('USER SUCCESSFULLY REGISTERED',res);
+      this.userService.registerUser(this.newUserInfo).subscribe({
+        next: (res: Users) => {
+          this.message = 'Account successfully created!';
+          this.toasterComponent.openToaster();
+        }
       });
       this.router.navigate(['login']);
     }

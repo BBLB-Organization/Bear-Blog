@@ -5,6 +5,7 @@ import { CreateBlogPageComponent } from './features/create-blog/pages/create-blo
 import { CreateCommentsComponent } from './features/create-comments/pages/view-comments-page/create-comments.component';
 import { CreateLoginPageComponent } from './features/create-login/pages/create-login-page/create-login-page.component';
 import { CreateUserRegistrationPageComponent } from './features/create-login/pages/create-user-registration-page/create-user-registration-page.component';
+import { AuthService } from './core/services/auth-service/auth.service';
 
 
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   },
   {
     path:'create-blog',
-    component: CreateBlogPageComponent
+    component: CreateBlogPageComponent,
+    canActivate: [AuthService]
   },
   {
     path:':blogId/comments',

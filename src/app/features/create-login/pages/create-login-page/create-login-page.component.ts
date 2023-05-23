@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Users } from 'src/app/core/models/users';
+import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { UsersService } from 'src/app/core/services/user-service/users.service';
+import { ToasterComponent } from 'src/app/shared/toaster/toaster.component';
 
 @Component({
   selector: 'app-create-login-page',
@@ -12,14 +14,16 @@ import { UsersService } from 'src/app/core/services/user-service/users.service';
 export class CreateLoginPageComponent implements OnInit {
 
   loginPageWindow: any;
-
+  message: string = "";
+  @ViewChild(ToasterComponent) toasterComponent: ToasterComponent = new ToasterComponent;
   existingUser: Users = {
     id: undefined,
     userName: "",
     password: "",
     emailAddress: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    loggedIn: false
   };
 
   signInForm: FormGroup = this.fb.group({
@@ -43,7 +47,12 @@ export class CreateLoginPageComponent implements OnInit {
       this.prepareSignIn();
       this.userService.checkLoginCredentials(this.existingUser).subscribe({
         next: (user: Users) => {
-          console.log('USER LOGIN SUCCESSFUL', user);
+          localStorage.setItem('emailAddress', this.existingUser.emailAddress);
+          this.loginPageWindow.location.reload();
+        },
+        error: (msg: any) => {
+          this.message = 'Incorrect username or password';
+          this.toasterComponent.openToaster();
         }
       }
       );
@@ -60,12 +69,19 @@ export class CreateLoginPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userService: UsersService) {
+    private userService: UsersService,
+    private authService: AuthService
+  ) {
     this.loginPageWindow = window;
   }
 
   ngOnInit(): void {
-
+    let emailAddress = localStorage.getItem('emailAddress') ?? "";
+    if (emailAddress != "") {
+      this.authService.checkIfUserLoggedIn(emailAddress).subscribe((res) => {
+        this.router.navigate(['']);
+      });
+    }
   }
 
 }

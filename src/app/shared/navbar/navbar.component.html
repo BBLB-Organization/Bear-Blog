@@ -10,8 +10,9 @@
             <nav id="navbar-1" class="navbar item-nav navbar-right">
                 <ul>
                     <li><a class="nav-links" routerLink="">Home</a></li>
-                    <li><a class="nav-links" routerLink="create-blog">Create Blog</a></li>
-                    <li><a class="nav-links" routerLink="login">Login</a></li>
+                    <li><a class="nav-links" routerLink="create-blog" *ngIf="navbarLoginToggle">Create Blog</a></li>
+                    <li><a class="nav-links" routerLink="login" *ngIf="!navbarLoginToggle">Login</a></li>
+                    <li><a class="nav-links" (click)="logoutCurrentUser()" routerLink="" *ngIf="navbarLoginToggle">Logout</a></li>
                 </ul>
             </nav>
         </header>
