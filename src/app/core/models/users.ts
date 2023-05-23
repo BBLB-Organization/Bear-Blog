@@ -4,5 +4,6 @@ export interface Users {
     lastName: string,
     userName: string,
     emailAddress: string,
-    password: string
+    password: string,
+    loggedIn : boolean
 }

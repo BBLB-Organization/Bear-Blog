@@ -17,7 +17,8 @@ export class CreateUserRegistrationPageComponent implements OnInit {
     lastName: "",
     userName: "",
     emailAddress: "",
-    password: ""
+    password: "",
+    loggedIn: false
   }
 
   registerForm: FormGroup = this.fb.group({
@@ -47,9 +48,7 @@ export class CreateUserRegistrationPageComponent implements OnInit {
   registerUser(): void {
     if (this.registerForm.valid) {
       this.prepareSave();
-      this.userService.registerUser(this.newUserInfo).subscribe((res)=>{
-        console.log('USER SUCCESSFULLY REGISTERED',res);
-      });
+      this.userService.registerUser(this.newUserInfo).subscribe();
       this.router.navigate(['login']);
     }
   }

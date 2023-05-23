@@ -45,7 +45,7 @@ export class UserCreateCommentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.blog);
+    
   }
 
   addCommentIdToBlog() {

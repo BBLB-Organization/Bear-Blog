@@ -19,7 +19,8 @@ export class CreateLoginPageComponent implements OnInit {
     password: "",
     emailAddress: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    loggedIn: false
   };
 
   signInForm: FormGroup = this.fb.group({
@@ -43,7 +44,7 @@ export class CreateLoginPageComponent implements OnInit {
       this.prepareSignIn();
       this.userService.checkLoginCredentials(this.existingUser).subscribe({
         next: (user: Users) => {
-          console.log('USER LOGIN SUCCESSFUL', user);
+          localStorage.setItem('emailAddress', this.existingUser.emailAddress);
         }
       }
       );
