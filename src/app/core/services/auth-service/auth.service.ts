@@ -26,6 +26,10 @@ export class AuthService implements CanActivate {
     return this.http.get<boolean>(this.usersURL + "?emailAddress=" + emailAddress);
   }
 
+  logoutCurrentUser(emailAddress: string | null): Observable<boolean> {
+    return this.http.put<boolean>(this.usersURL + "/logout?emailAddress=" + emailAddress, {});
+  }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):
