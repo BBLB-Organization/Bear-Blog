@@ -6,30 +6,35 @@ import { CreateCommentsComponent } from './features/create-comments/pages/view-c
 import { CreateLoginPageComponent } from './features/create-login/pages/create-login-page/create-login-page.component';
 import { CreateUserRegistrationPageComponent } from './features/create-login/pages/create-user-registration-page/create-user-registration-page.component';
 import { AuthService } from './core/services/auth-service/auth.service';
+import { ForgotPasswordPageComponent } from './features/create-login/pages/forgot-password-page/forgot-password-page.component';
 
 
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: BlogPageComponent
   },
   {
-    path:'create-blog',
+    path: 'create-blog',
     component: CreateBlogPageComponent,
     canActivate: [AuthService]
   },
   {
-    path:':blogId/comments',
+    path: ':blogId/comments',
     component: CreateCommentsComponent
   },
   {
-    path:'login',
+    path: 'login',
     component: CreateLoginPageComponent
   },
   {
-    path:'register',
+    path: 'register',
     component: CreateUserRegistrationPageComponent
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordPageComponent
   }
 ];
 
