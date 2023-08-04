@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Users } from 'src/app/core/models/users';
+import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { UsersService } from 'src/app/core/services/user-service/users.service';
 import { ToasterComponent } from 'src/app/shared/toaster/toaster.component';
 
@@ -65,11 +66,24 @@ export class CreateUserRegistrationPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userService: UsersService
+    private userService: UsersService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-
+    let emailAddress = localStorage.getItem('emailAddress') ?? "";
+    if (emailAddress != "") {
+      this.authService.checkIfUserLoggedIn(emailAddress).subscribe((res) => {
+        this.router.navigate(['']);
+      });
+    }
+    else {
+      this.authService.checkIfUserLoggedIn(emailAddress).subscribe({
+        error: (msg: any) => {
+          this.router.navigate(['']);
+        }
+      })
+    }
   }
 
 }

@@ -83,6 +83,13 @@ export class CreateLoginPageComponent implements OnInit {
         this.router.navigate(['']);
       });
     }
+    else{
+      this.authService.checkIfUserLoggedIn(emailAddress).subscribe({
+        error: (msg: any)=>{
+          this.router.navigate(['']);
+        }
+      })
+    }
   }
 
 }

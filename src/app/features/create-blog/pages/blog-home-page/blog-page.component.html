@@ -6,7 +6,7 @@
 
 <!-- Content -->
 <div class="content">
-    <div class="container">
+    <div class="container" *ngIf="blogServerStatus">
         <!-- Post -->
         <div *ngFor="let singleBlog of listOfBlogs" class="post">
             <!-- Heading -->
@@ -47,7 +47,9 @@
                     </div>
                     <div class="unit-100">
                         <strong>COMMENTS: </strong>
-                        <button class="navigate-to-comments-button" (click)="navigateToCommentPage(singleBlog.id)">{{singleBlog.commentId?.split(',')?.length ?? '0'}}</button>
+                        <button class="navigate-to-comments-button"
+                            (click)="navigateToCommentPage(singleBlog.id)">{{singleBlog.commentId?.split(',')?.length ??
+                            '0'}}</button>
                     </div>
                     <div class="unit-100">
                         <strong>Created By: </strong>
@@ -71,5 +73,10 @@
         </div>
         <!-- /post -->
 
+    </div>
+
+    <div *ngIf="!blogServerStatus" class="container">
+        <h2 class="page-not-found">503 Server Error: The server is unavailable to handle this request right now.</h2>
+        <h3 class="page-not-found">Please check back when server is live again.</h3>
     </div>
 </div>

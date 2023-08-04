@@ -176,3 +176,7 @@ img {
     cursor: pointer;
     color: #E85F37;
 }
+
+.page-not-found{
+    text-align: center;
+}
