@@ -15,6 +15,7 @@ export class BlogPageComponent implements OnInit {
 
   listOfBlogs: Blog[] = [];
   tagListPerBlog: string = "";
+  blogServerStatus : boolean = false;
   blogInfo: Blog = {
     id: undefined,
     blogTitle: "",
@@ -37,10 +38,18 @@ export class BlogPageComponent implements OnInit {
     this.loadAllBlogs();
   }
 
-  loadAllBlogs() {
-    this.blogService.getAllBlogs().subscribe((res: Blog[]) => {
-      this.listOfBlogs = res.reverse();
-    });
+  loadAllBlogs(){
+    this.blogService.getAllBlogs().subscribe({
+      next: (res: Blog[])=>{
+        this.listOfBlogs = res.reverse();
+        localStorage.setItem('server_status', 'true');
+        this.blogServerStatus = true;
+      },
+      error: (msg: any)=>{
+        localStorage.setItem('server_status', 'false');
+        this.blogServerStatus = false;
+      }
+    })
   }
 
   navigateToCommentPage(blogId: number | undefined){

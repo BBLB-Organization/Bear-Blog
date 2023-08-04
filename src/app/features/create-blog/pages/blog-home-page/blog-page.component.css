@@ -71,6 +71,12 @@
     grid-template-columns: auto auto;
 }
 
+@media (max-width: 660px){
+    .paragraph-image-grid{
+        display: block;
+    }
+}
+
 .in-content img.right {
     float: right;
     margin: 0 0 10px 20px;
@@ -100,7 +106,8 @@ a.read-more {
 
 a.read-more:hover {
     background-color: #E85F37;
-    color: #FFF
+    color: #FFF;
+    cursor: pointer;
 }
 
 p {
@@ -168,4 +175,8 @@ img {
 .navigate-to-comments-button:hover{
     cursor: pointer;
     color: #E85F37;
+}
+
+.page-not-found{
+    text-align: center;
 }
