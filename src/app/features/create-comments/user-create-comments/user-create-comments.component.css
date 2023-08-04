@@ -15,6 +15,12 @@
     font-family: "Comic Sans MS", cursive;
 }
 
+@media (max-width: 660px){
+    .comment-form textarea{
+        width: 85%;
+    }
+}
+
 .comment-form button {
     display: block;
     font-family: "Open Sans", sans-serif;

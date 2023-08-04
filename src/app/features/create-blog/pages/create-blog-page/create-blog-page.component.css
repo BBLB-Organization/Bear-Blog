@@ -58,6 +58,13 @@ textarea {
     display: inline;
 }
 
+@media (max-width: 660px){
+    .tag-button-container{
+        display: block;
+        padding-bottom: 10px;
+    }
+}
+
 .button-tags.tag-picked{
     background-color: #32a852;
     color: #FFF;
