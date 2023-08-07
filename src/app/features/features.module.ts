@@ -15,6 +15,7 @@ import { ViewCommentsComponent } from './create-comments/view-comments/view-comm
 import { CreateLoginPageComponent } from './create-login/pages/create-login-page/create-login-page.component';
 import { CreateUserRegistrationPageComponent } from './create-login/pages/create-user-registration-page/create-user-registration-page.component';
 import { ForgotPasswordPageComponent } from './create-login/pages/forgot-password-page/forgot-password-page.component';
+import { VerificationUserPageComponent } from './create-login/pages/verification-user-page/verification-user-page.component';
 
 
 
@@ -30,7 +31,7 @@ import { ForgotPasswordPageComponent } from './create-login/pages/forgot-passwor
     CreateCommentsComponent, 
     UserCreateCommentsComponent, 
     ViewCommentsComponent, 
-    CreateLoginPageComponent, CreateUserRegistrationPageComponent, ForgotPasswordPageComponent
+    CreateLoginPageComponent, CreateUserRegistrationPageComponent, ForgotPasswordPageComponent, VerificationUserPageComponent
   ],
   imports: [
     CommonModule,

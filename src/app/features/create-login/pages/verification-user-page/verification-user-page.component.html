@@ -1,0 +1,29 @@
+<img class="nature-mountains" src="assets/nature-mountain-2.jpg" alt="nature-mountain.jpg">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <img src="assets/bear-logo.png" alt="bear-logo.png" class="bear-image mx-auto d-block text-center">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Enter Verification Code</h3>
+                    <br>
+                    <form (ngSubmit)="checkUserVerificationCode()" [formGroup]="verificationForm">
+                        <div>
+                            <label for="email">Please enter the verification code you received in your email.
+                            </label>
+                            <br>
+                            <label for="email-input">Verification Code</label>
+                            <input type="number" class="form-control" formControlName="verificationCode" id="verificationCode"
+                                aria-describedby="verificationCodeHelp" required>
+                            <button>Resend Verification Code</button>
+                        </div>
+                        <div class="button-row pt-5 pb-5">
+                            <button type="submit"
+                                class="btn btn-lg btn-outline-primary col-md-5 registerButton">Continue</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import { CreateLoginPageComponent } from './features/create-login/pages/create-l
 import { CreateUserRegistrationPageComponent } from './features/create-login/pages/create-user-registration-page/create-user-registration-page.component';
 import { AuthService } from './core/services/auth-service/auth.service';
 import { ForgotPasswordPageComponent } from './features/create-login/pages/forgot-password-page/forgot-password-page.component';
+import { VerificationUserPageComponent } from './features/create-login/pages/verification-user-page/verification-user-page.component';
 
 
 
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordPageComponent
+  },
+  {
+    path: ':userId/user-verification',
+    component: VerificationUserPageComponent
   }
 ];
 
