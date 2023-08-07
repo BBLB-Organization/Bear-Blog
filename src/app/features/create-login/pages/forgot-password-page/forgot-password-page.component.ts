@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 })
 export class ForgotPasswordPageComponent implements OnInit {
 
+  userErrorMessage : boolean = false;
+  userValidMessage : boolean = false;
   forgotPasswordForm: FormGroup = this.fb.group({
     emailAddress: ['', Validators.required]
   },
@@ -29,9 +31,13 @@ export class ForgotPasswordPageComponent implements OnInit {
     this.authService.sendForgotPasswordEmail(this.emailAddress).subscribe({
       next: (res: any) => {
         console.log(res);
+        this.userValidMessage = true;
+        this.userErrorMessage = false;
       },
       error: (msg: any) => {
         console.log(msg);
+        this.userErrorMessage = true;
+        this.userValidMessage = false;
       }
     })
   }
