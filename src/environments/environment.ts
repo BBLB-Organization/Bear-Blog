@@ -4,5 +4,6 @@ export const environment = {
   imageURL: 'http://localhost:8080/image',
   tagURL : 'http://localhost:8080/tag-list',
   commentURL: 'http://localhost:8080/comments',
-  usersURL: 'http://localhost:8080/users'
+  usersURL: 'http://localhost:8080/users',
+  emailURL: 'http://localhost:8080/email'
 };

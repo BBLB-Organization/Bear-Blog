@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable, catchError, map, of, switchMap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -15,6 +15,7 @@ export class AuthService implements CanActivate {
   ) { }
 
   usersURL: string = environment.usersURL;
+  emailURL: string = environment.emailURL;
   loggedIn: boolean = false;
   userHeaders = {
     headers: new HttpHeaders({
@@ -28,6 +29,11 @@ export class AuthService implements CanActivate {
 
   logoutCurrentUser(emailAddress: string | null): Observable<boolean> {
     return this.http.put<boolean>(this.usersURL + "/logout?emailAddress=" + emailAddress, {});
+  }
+
+  sendForgotPasswordEmail(emailAddress: string | null): Observable<string> {
+    return this.http.put(this.emailURL + "?emailAddress=" + emailAddress, {}, { responseType: 'text' })
+      .pipe(map(response => response as string));
   }
 
   canActivate(
