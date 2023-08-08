@@ -36,6 +36,10 @@ export class AuthService implements CanActivate {
       .pipe(map(response => response as string));
   }
 
+  checkVerificationCode(userEmailAddress: string | null, userGeneratedVerificationCode: number | null): Observable<boolean> {
+    return this.http.put<boolean>(this.emailURL + "/check-verification-code?userEmailAddress=" + userEmailAddress + "&userGeneratedVerificationCode=" + userGeneratedVerificationCode, {});
+  }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):
