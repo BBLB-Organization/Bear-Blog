@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { UsersService } from 'src/app/core/services/user-service/users.service';
 
@@ -23,7 +23,8 @@ export class ChangePasswordPageComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private userService: UsersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   get newPassword(): string { return this.changePasswordForm.get('newPassword')?.value; }
@@ -33,6 +34,32 @@ export class ChangePasswordPageComponent implements OnInit {
   }
 
   changeUserPassword() {
-    console.log('Change password function');
+    let userId = this.route.snapshot.paramMap.get('userId') ?? "";
+    let id = Number(userId);
+    this.getEmailAddress(id).then(() => {
+      this.userService.changeCurrentUserPassword(this.userEmailAddress, this.newPassword).subscribe({
+        next: (res: any) => {
+          this.router.navigate(['login']);
+        },
+        error: (msg: any) => {
+          console.log(msg);
+        }
+      });
+    })
   }
+
+  getEmailAddress(userId: number | null) {
+    return new Promise<void>((resolve, reject) => {
+      this.userService.getUserEmailAddressById(userId).subscribe({
+        next: (res: any) => {
+          this.userEmailAddress = res;
+          resolve();
+        },
+        error: (error: any) => {
+          reject(error);
+        }
+      });
+    });
+  }
+
 }
