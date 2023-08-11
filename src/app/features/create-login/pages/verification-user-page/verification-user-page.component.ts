@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { UsersService } from 'src/app/core/services/user-service/users.service';
 
@@ -12,6 +12,7 @@ import { UsersService } from 'src/app/core/services/user-service/users.service';
 export class VerificationUserPageComponent implements OnInit {
 
   userEmailAddress: string = "";
+  displayVerificationErrorMessage: boolean = false;
   verificationForm: FormGroup = this.fb.group({
     verificationCode: ['', Validators.required]
   },
@@ -22,7 +23,8 @@ export class VerificationUserPageComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private userService: UsersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   get verificationCode(): number { return this.verificationForm.get('verificationCode')?.value; }
@@ -36,12 +38,26 @@ export class VerificationUserPageComponent implements OnInit {
     this.getEmailAddress(id).then(() => {
       this.authService.checkVerificationCode(this.userEmailAddress, this.verificationCode).subscribe({
         next: (isUserVerificationValid: boolean) => {
-          console.log('VERIFICATION CODE is: ', isUserVerificationValid);
+          if (isUserVerificationValid) {
+            this.displayVerificationErrorMessage = false;
+            this.router.navigate([id + '/change-password']);
+          }
+          else {
+            this.displayVerificationErrorMessage = true;
+          }
         },
         error: (msg: any) => {
-          console.log('VERIFICATION CODE IS INCORRECT', msg);
+          console.log('Error sending verification code', msg);
         }
       })
+    });
+  }
+
+  resendVerificationCode() {
+    let userId = this.route.snapshot.paramMap.get('userId') ?? "";
+    let id = Number(userId);
+    this.getEmailAddress(id).then(() => {
+      this.authService.sendForgotPasswordEmail(this.userEmailAddress).subscribe();
     });
   }
 

@@ -52,7 +52,7 @@ export class AuthService implements CanActivate {
         this.loggedIn = res;
         if (!this.loggedIn) {
           this.router.navigate(['']);
-          return of(this.loggedIn)
+          return of(this.loggedIn);
         }
         else {
           return of(this.loggedIn);

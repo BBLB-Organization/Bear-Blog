@@ -1,5 +1,6 @@
-<img class="nature-mountains" src="assets/nature-mountain-2.jpg" alt="nature-mountain.jpg">
+
 <div class="container mt-5">
+    <img class="nature-mountains" src="assets/nature-mountain-2.jpg" alt="nature-mountain.jpg">
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <img src="assets/bear-logo.png" alt="bear-logo.png" class="bear-image mx-auto d-block text-center">
@@ -13,9 +14,12 @@
                             </label>
                             <br>
                             <label for="email-input">Verification Code</label>
-                            <input type="number" class="form-control" formControlName="verificationCode" id="verificationCode"
-                                aria-describedby="verificationCodeHelp" required>
-                            <button>Resend Verification Code</button>
+                            <input type="number" class="form-control" formControlName="verificationCode"
+                                id="verificationCode" aria-describedby="verificationCodeHelp" required>
+                            <button class="resendButton" type="button" (click)="resendVerificationCode()">Resend
+                                Verification Code</button>
+                            <small class="verification-code-not-valid" *ngIf="displayVerificationErrorMessage" for="verification-error">Verification code incorrect, please check email again or
+                                click resend verification code to refresh verification code.</small>
                         </div>
                         <div class="button-row pt-5 pb-5">
                             <button type="submit"
