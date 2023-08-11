@@ -29,6 +29,15 @@ export class UsersService {
     ).pipe(map(res => res), catchError(this.handleError));
   }
 
+  getUserEmailAddressById(id: number | null): Observable<any> {
+    return this.http.get(this.usersURL + "/" + id, { responseType: 'text' }).pipe(map(response => response as string));
+  }
+
+  changeCurrentUserPassword(emailAddress: string | null, newPassword: string | null): Observable<string> {
+    return this.http.put(this.usersURL + "/change-password?emailAddress=" + emailAddress + "&newPassword=" + newPassword, {},
+      { responseType: 'text' }).pipe(map(response => response as string));
+  }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

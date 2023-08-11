@@ -14,6 +14,9 @@ import { UserCreateCommentsComponent } from './create-comments/user-create-comme
 import { ViewCommentsComponent } from './create-comments/view-comments/view-comments.component';
 import { CreateLoginPageComponent } from './create-login/pages/create-login-page/create-login-page.component';
 import { CreateUserRegistrationPageComponent } from './create-login/pages/create-user-registration-page/create-user-registration-page.component';
+import { ForgotPasswordPageComponent } from './create-login/pages/forgot-password-page/forgot-password-page.component';
+import { VerificationUserPageComponent } from './create-login/pages/verification-user-page/verification-user-page.component';
+import { ChangePasswordPageComponent } from './create-login/pages/change-password-page/change-password-page.component';
 
 
 
@@ -29,7 +32,7 @@ import { CreateUserRegistrationPageComponent } from './create-login/pages/create
     CreateCommentsComponent, 
     UserCreateCommentsComponent, 
     ViewCommentsComponent, 
-    CreateLoginPageComponent, CreateUserRegistrationPageComponent
+    CreateLoginPageComponent, CreateUserRegistrationPageComponent, ForgotPasswordPageComponent, VerificationUserPageComponent, ChangePasswordPageComponent
   ],
   imports: [
     CommonModule,

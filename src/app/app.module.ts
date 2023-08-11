@@ -4,10 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FeaturesModule } from './features/features.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { LoadingInterceptor } from './core/interceptors/loader-interceptor/loader.interceptor';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     RouterModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
