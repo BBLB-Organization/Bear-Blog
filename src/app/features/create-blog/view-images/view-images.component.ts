@@ -17,7 +17,6 @@ export class ViewImagesComponent implements OnInit {
   constructor(private imageService: ImageService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    //this.loadAllImages();
     this.loadImageById();
   }
 
@@ -26,7 +25,10 @@ export class ViewImagesComponent implements OnInit {
     let testing = URL.createObjectURL(data);
     image.src = testing;
 
+    console.log(image);
+
     image.onload = () => {
+      console.log('ONLOAD')
       const maxWidthOrHeight = 400;
 
       if (image.width > image.height) {
@@ -55,18 +57,6 @@ export class ViewImagesComponent implements OnInit {
         this.compressImage(data);
       })
     }
-  }
-
-  //MAY USE LOAD ALL IMAGES LATER ...
-  loadAllImages() {
-    this.imageService.getAllImageNames().subscribe((listOfImageNames: string[]) => {
-      listOfImageNames.forEach((imageName: string) => {
-        this.imageService.getImageByName(imageName).subscribe((data: Blob) => {
-          this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(data));
-          this.listOfImageUrl.push(this.imageUrl);
-        });
-      });
-    })
   }
 
 }
