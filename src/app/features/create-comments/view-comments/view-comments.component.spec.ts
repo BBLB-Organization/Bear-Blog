@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewCommentsComponent } from './view-comments.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ViewCommentsComponent', () => {
   let component: ViewCommentsComponent;
@@ -8,7 +9,8 @@ describe('ViewCommentsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewCommentsComponent ]
+      declarations: [ ViewCommentsComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
 

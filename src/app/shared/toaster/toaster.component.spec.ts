@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToasterComponent } from './toaster.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ToasterComponent', () => {
   let component: ToasterComponent;
@@ -8,7 +9,8 @@ describe('ToasterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ToasterComponent ]
+      declarations: [ ToasterComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 

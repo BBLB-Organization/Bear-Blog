@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewImagesComponent } from './view-images.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ViewImagesComponent', () => {
   let component: ViewImagesComponent;
@@ -8,7 +9,8 @@ describe('ViewImagesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewImagesComponent ]
+      declarations: [ ViewImagesComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
 

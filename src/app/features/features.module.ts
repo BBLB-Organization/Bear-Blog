@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlogPageComponent } from './create-blog/pages/blog-home-page/blog-page.component';
 import { ByPassSecurityPipe } from '../shared/pipes/sanitize.pipe';
@@ -24,15 +24,19 @@ import { ChangePasswordPageComponent } from './create-login/pages/change-passwor
 
 @NgModule({
   declarations: [
-    BlogPageComponent, 
-    ViewImagesComponent, 
-    UploadImagesComponent, 
-    CreateBlogPageComponent, 
-    ViewTagsComponent, 
-    CreateCommentsComponent, 
-    UserCreateCommentsComponent, 
-    ViewCommentsComponent, 
-    CreateLoginPageComponent, CreateUserRegistrationPageComponent, ForgotPasswordPageComponent, VerificationUserPageComponent, ChangePasswordPageComponent
+    BlogPageComponent,
+    ViewImagesComponent,
+    UploadImagesComponent,
+    CreateBlogPageComponent,
+    ViewTagsComponent,
+    CreateCommentsComponent,
+    UserCreateCommentsComponent,
+    ViewCommentsComponent,
+    CreateLoginPageComponent,
+    CreateUserRegistrationPageComponent,
+    ForgotPasswordPageComponent,
+    VerificationUserPageComponent,
+    ChangePasswordPageComponent
   ],
   imports: [
     CommonModule,
