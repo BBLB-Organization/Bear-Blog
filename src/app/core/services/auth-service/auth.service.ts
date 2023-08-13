@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService implements CanActivate {
 
   constructor(
-    private router: Router,
+    public router: Router,
     private http: HttpClient
   ) { }
 
@@ -42,25 +42,21 @@ export class AuthService implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot):
-    boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    state: RouterStateSnapshot
+  ): Promise<boolean | UrlTree> {
+    return new Promise<boolean | UrlTree>((resolve) => {
+      let emailAddress = localStorage.getItem('emailAddress');
 
-    let emailAddress = localStorage.getItem('emailAddress');
-
-    return this.checkIfUserLoggedIn(emailAddress).pipe(
-      switchMap((res: boolean) => {
+      this.checkIfUserLoggedIn(emailAddress).subscribe(((res: boolean) => {
         this.loggedIn = res;
         if (!this.loggedIn) {
           this.router.navigate(['']);
-          return of(this.loggedIn);
         }
-        else {
-          return of(this.loggedIn);
-        }
-
+        resolve(this.loggedIn);
       })
-    );
-
+      )
+    });
   }
+
 
 }

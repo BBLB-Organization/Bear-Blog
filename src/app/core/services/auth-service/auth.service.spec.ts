@@ -1,9 +1,11 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
+import { Observable, of, switchMap, take } from 'rxjs';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -12,7 +14,7 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [AuthService]
     });
     service = TestBed.inject(AuthService);
@@ -54,5 +56,46 @@ describe('AuthService', () => {
       }
     })
   });
+
+  it('should return true if user email address is valid and user provides verification code', () => {
+    let fakeUserVerificationCode = 12345;
+    spyOn(httpClient, 'put').and.returnValue(of(true));
+    service.checkVerificationCode(fakeEmailAddress, fakeUserVerificationCode).subscribe({
+      next: (res: any) => {
+        expect(res).toEqual(true);
+      }
+    })
+  });
+
+  describe('canActivate', () => {
+    it('should navigate to home page when user is not logged in', async () => {
+      const routeSnapshot: ActivatedRouteSnapshot = {} as ActivatedRouteSnapshot;
+      const stateSnapshot: RouterStateSnapshot = {} as RouterStateSnapshot;
+
+      const mockLoggedIn = false;
+      spyOn(service, 'checkIfUserLoggedIn').and.returnValue(of(mockLoggedIn));
+      spyOn(service.router, 'navigate');
+
+      const canActivateResult = await service.canActivate(routeSnapshot, stateSnapshot);
+
+      expect(canActivateResult).toBe(mockLoggedIn);
+      expect(service.router.navigate).toHaveBeenCalledWith(['']);
+    });
+
+    it('should allow navigation when user is logged in', async () => {
+      const routeSnapshot: ActivatedRouteSnapshot = {} as ActivatedRouteSnapshot;
+      const stateSnapshot: RouterStateSnapshot = {} as RouterStateSnapshot;
+
+      const mockLoggedIn = true;
+      spyOn(service, 'checkIfUserLoggedIn').and.returnValue(of(mockLoggedIn));
+      spyOn(service.router, 'navigate');
+
+      const canActivateResult = await service.canActivate(routeSnapshot, stateSnapshot);
+
+      expect(canActivateResult).toBe(mockLoggedIn);
+      expect(service.router.navigate).not.toHaveBeenCalled();
+    });
+  });
+
 
 });
