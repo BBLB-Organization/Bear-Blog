@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForgotPasswordPageComponent } from './forgot-password-page.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormBuilder } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ForgotPasswordPageComponent', () => {
   let component: ForgotPasswordPageComponent;
@@ -8,7 +11,10 @@ describe('ForgotPasswordPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForgotPasswordPageComponent ]
+      declarations: [ ForgotPasswordPageComponent ],
+      imports: [HttpClientTestingModule],
+      providers: [FormBuilder],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 

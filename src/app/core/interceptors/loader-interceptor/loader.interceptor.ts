@@ -12,7 +12,7 @@ import { LoaderService } from '../../services/loader-service/loader.service';
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
 
-  private totalRequests = 0;
+  public totalRequests = 0;
 
   constructor(
     private loadingService: LoaderService
